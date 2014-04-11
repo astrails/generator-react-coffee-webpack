@@ -5,4 +5,3 @@ node_js:
 before_install:
   - currentfolder=${PWD##*/}
   - if [ "$currentfolder" != 'generator-react-coffee-webpack' ]; then cd .. && eval "mv $currentfolder generator-react-coffee-webpack" && cd generator-react-coffee-webpack; fi
-
