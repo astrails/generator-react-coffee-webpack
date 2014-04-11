@@ -12,8 +12,8 @@
     "front-end",
     "app"
   ],
-  "homepage": "https://github.com/newtriks/generator-react-webpack",
-  "bugs": "https://github.com/newtriks/generator-react-webpack/issues",
+  "homepage": "https://github.com/zimok/generator-react-coffee-webpack",
+  "bugs": "https://github.com/zimok/generator-react-coffee-webpack/issues",
   "author": {
     "name": "Simone Carella",
     "email": "simonecarella@gmail.com",
@@ -22,7 +22,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/newtriks/generator-react-webpack.git"
+    "url": "git://github.com/zimok/generator-react-coffee-webpack.git"
   },
   "scripts": {
     "test": "mocha"
