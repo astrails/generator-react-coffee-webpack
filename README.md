@@ -1,4 +1,4 @@
-# generator-react-coffee-webpack [![Build Status](https://secure.travis-ci.org/newtriks/generator-react-coffee-webpack.png?branch=master)](https://travis-ci.org/newtriks/generator-react-coffee-webpack)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-react-coffee-webpack [![Build Status](https://secure.travis-ci.org/zimok/generator-react-coffee-webpack.png?branch=master)](https://travis-ci.org/zimok/generator-react-coffee-webpack)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 > Yeoman generator for [ReactJS](http://facebook.github.io/react/) - lets you quickly set up a project including karma test runner and [Webpack](http://webpack.github.io/) module system. Adds CoffeeScript support. Based on [generator-react-webpack](https://github.com/newtriks/generator-react-webpack).
 
