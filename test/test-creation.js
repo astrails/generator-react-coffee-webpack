@@ -5,7 +5,7 @@ var path = require('path');
 var helpers = require('yeoman-generator').test;
 var _ = require('underscore.string');
 
-describe('react-webpack generator', function () {
+describe('react-coffee-webpack generator', function () {
     var react;
 
     beforeEach(function (done) {
@@ -20,7 +20,7 @@ describe('react-webpack generator', function () {
                 return done(err);
             }
 
-            react = helpers.createGenerator('react-webpack:app', deps);
+            react = helpers.createGenerator('react-coffee-webpack:app', deps);
             react.options['skip-install'] = true;
             done();
         }.bind(this));
@@ -42,7 +42,7 @@ describe('react-webpack generator', function () {
             'karma.conf.js',
             'package.json',
             'package.json',
-            'src/scripts/components/TempTestApp.js',
+            'src/scripts/components/TempTestApp.coffee',
             'test/helpers/phantomjs-shims.js',
             'test/helpers/react/addons.js'
         ];
@@ -79,13 +79,13 @@ describe('react-webpack generator', function () {
         var reactGenerator;
         var name = 'Foo';
         var deps = [path.join('../..', generatorType)];
-        reactGenerator = helpers.createGenerator('react-webpack:' + generatorType, deps, [name]);
+        reactGenerator = helpers.createGenerator('react-coffee-webpack:' + generatorType, deps, [name]);
         react.run([], function () {
             //var Foo = React.createClass({
             reactGenerator.run([], function () {
                 helpers.assertFiles([
-                    [path.join('src/scripts', targetDirectory, name + '.js'), new RegExp('var ' + scriptNameFn(name) + suffix, 'g')],
-                    [path.join('test/spec', targetDirectory, name + '.js'), new RegExp('describe\\(\'' + specNameFn(name) + suffix + '\'', 'g')]
+                    [path.join('src/scripts', targetDirectory, name, name + '.coffee'), new RegExp(scriptNameFn(name) + suffix, 'g')],
+                    [path.join('test/spec', targetDirectory, name, name + '.coffee'), new RegExp('describe \'' + specNameFn(name) + suffix + '\'', 'g')]
                 ]);
                 done();
             });

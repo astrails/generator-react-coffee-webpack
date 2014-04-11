@@ -20,11 +20,11 @@ var ReactWebpackGenerator = module.exports = function ReactWebpackGenerator(args
 
   this.appPath = this.env.options.appPath;
 
-  this.hookFor('react-webpack:common', {
+  this.hookFor('react-coffee-webpack:common', {
     args: args
   });
 
-  this.hookFor('react-webpack:main', {
+  this.hookFor('react-coffee-webpack:main', {
     args: args
   });
 

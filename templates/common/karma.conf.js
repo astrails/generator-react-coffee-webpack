@@ -5,15 +5,20 @@ module.exports = function (config) {
     basePath: '',
     frameworks: ['jasmine'],
     files: [
-      'test/helpers/**/*.js',
-      'test/spec/components/**/*.js'
+      'test/helpers/**/*.coffee',
+      'test/spec/components/**/*.coffee'
     ],
     preprocessors: {
-      'test/spec/components/**/*.js': ['webpack']
+      'test/spec/components/**/*.coffee': ['webpack']
     },
     webpack: {
       cache: true,
       module: {
+        preLoaders: [{
+          test: /\.coffee$/,
+          exclude: 'node_modules',
+          loader: 'coffee-loader'
+        }],
         loaders: [{
           test: /\.css$/,
           loader: 'style!css'
@@ -27,7 +32,7 @@ module.exports = function (config) {
           test: /\.png/,
           loader: 'url-loader?limit=10000&minetype=image/png'
         }, {
-          test: /\.js$/,
+          test: /\.coffee$/,
           loader: 'jsx-loader'
         }]
       }

@@ -14,7 +14,8 @@ module.exports = function (grunt) {
   var pkgConfig = grunt.file.readJSON('package.json');
   var jshintConfig = grunt.file.readJSON('.jshintrc');
 
-  var loaders = [{
+  var loaders = [
+  {
     test: /\.css$/,
     loader: 'style!css'
   }, {
@@ -27,7 +28,7 @@ module.exports = function (grunt) {
     test: /\.png/,
     loader: 'url-loader?limit=10000&minetype=image/png'
   }, {
-    test: /\.js$/,
+    test: /\.coffee$/,
     loader: 'jsx-loader'
   }];
 
@@ -35,7 +36,7 @@ module.exports = function (grunt) {
     pkg: pkgConfig,
     webpack: {
       development: {
-        entry: './<%= pkg.src %>/scripts/components/<%= pkg.mainInput %>.js',
+        entry: './<%= pkg.src %>/scripts/components/<%= pkg.mainInput %>.coffee',
         output: {
           path: '<%= pkg.src %>/scripts/',
           filename: '<%= pkg.mainOutput %>.js'
@@ -46,15 +47,11 @@ module.exports = function (grunt) {
           colors: true,
           reasons: true
         },
-        jshint: grunt.util._.merge(jshintConfig, {
-          emitErrors: false,
-          failOnHint: false
-        }),
         module: {
           preLoaders: [{
-            test: '\\.js$',
+            test: /\.coffee$/,
             exclude: 'node_modules',
-            loader: 'jshint'
+            loader: 'coffee-loader'
           }],
           loaders: loaders
         }
@@ -62,7 +59,7 @@ module.exports = function (grunt) {
     },
     watch: {
       webpack: {
-        files: ['<%= pkg.src %>/scripts/{,*/}*.js',
+        files: ['<%= pkg.src %>/scripts/{,*/}*.coffee',
           '<%= pkg.src %>/styles/{,*/}*.css',
           '!<%= pkg.src %>/scripts/<%= pkg.mainOutput %>.js'
         ],

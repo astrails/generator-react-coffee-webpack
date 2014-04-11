@@ -25,7 +25,7 @@ var Generator = module.exports = function Generator() {
 	}
 
 	var sourceRoot = '/templates/javascript';
-	this.scriptSuffix = '.js';
+	this.scriptSuffix = '.coffee';
 
 	this.sourceRoot(path.join(__dirname, sourceRoot));
 };
@@ -54,6 +54,6 @@ Generator.prototype.htmlTemplate = function (src, dest) {
 };
 
 Generator.prototype.generateSourceAndTest = function (appTemplate, testTemplate, targetDirectory) {
-	this.appTemplate(appTemplate, path.join('scripts', targetDirectory, this._.capitalize(this.name)));
-	this.testTemplate(testTemplate, path.join(targetDirectory, this._.capitalize(this.name)));
+	this.appTemplate(appTemplate, path.join('scripts', targetDirectory, this.name, this._.capitalize(this.name)));
+	this.testTemplate(testTemplate, path.join(targetDirectory, this.name, this._.capitalize(this.name)));
 };
