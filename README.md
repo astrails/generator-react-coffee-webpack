@@ -1,13 +1,13 @@
-# generator-react-webpack [![Build Status](https://secure.travis-ci.org/newtriks/generator-react-webpack.png?branch=master)](https://travis-ci.org/newtriks/generator-react-webpack)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# generator-react-coffee-webpack [![Build Status](https://secure.travis-ci.org/newtriks/generator-react-coffee-webpack.png?branch=master)](https://travis-ci.org/newtriks/generator-react-coffee-webpack)  [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-> Yeoman generator for [ReactJS](http://facebook.github.io/react/) - lets you quickly set up a project including karma test runner and [Webpack](http://webpack.github.io/) module system.
+> Yeoman generator for [ReactJS](http://facebook.github.io/react/) - lets you quickly set up a project including karma test runner and [Webpack](http://webpack.github.io/) module system. Adds CoffeeScript support. Based on [generator-react-webpack](https://github.com/newtriks/generator-react-webpack).
 
 
 ## Usage
 
-Install `generator-react-webpack`:
+Install `generator-react-coffee-webpack`:
 ```
-npm install -g generator-react-webpack
+npm install -g generator-react-coffee-webpack
 ```
 
 Make a new directory, and `cd` into it:
@@ -15,9 +15,9 @@ Make a new directory, and `cd` into it:
 mkdir my-new-project && cd $_
 ```
 
-Run `yo react-webpack`, optionally passing an app name:
+Run `yo react-coffee-webpack`, optionally passing an app name:
 ```
-yo react-webpack [app-name]
+yo react-coffee-webpack [app-name]
 ```
 
 Run `grunt` for building and `grunt serve` for preview in the browser at [localhost](http://localhost:8000).
@@ -26,8 +26,8 @@ Run `grunt` for building and `grunt serve` for preview in the browser at [localh
 
 Available generators:
 
-* [react-webpack](#app) (aka [react-webpack:app](#app))
-* [react-webpack:component](#component)
+* [react-coffee-webpack](#app) (aka [react-webpack:app](#app))
+* [react-coffee-webpack:component](#component)
 
 **Note: Generators are to be run from the root directory of your app.**
 
@@ -42,19 +42,19 @@ Sets up a new ReactJS app, generating all the boilerplate you need to get starte
 
 Example:
 ```bash
-yo react-webpack
+yo react-coffee-webpack
 ```
 
 ### Component
 
-Generates a [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) component in `src/scripts/components` and it's corresponding test in `src/spec/components`.
+Generates a [JSX](http://facebook.github.io/react/docs/jsx-in-depth.html) component in `src/scripts/components/<name>` and it's corresponding test in `src/spec/components/<name>`.
 
 Example:
 ```bash
-yo react-webpack:component foo
+yo react-coffee-webpack:component foo
 ```
 
-Produces `src/scripts/components/Foo.js` (*javascript - JSX*):
+Produces `src/scripts/components/Foo/Foo.coffee` (*javascript - JSX*):
 ```
 /**
  * @jsx React.DOM
@@ -62,40 +62,30 @@ Produces `src/scripts/components/Foo.js` (*javascript - JSX*):
 
 'use strict';
 
-var React = require('react/addons');
+React = require 'react/addons'
 
-var Foo = React.createClass({
-  /*jshint ignore:start */
-  render: function () {
-    return (
-        <div>
-          <p>Content for Foo</p>
-        </div>
-      )
-  }
-  /*jshint ignore:end */
-});
+var Foo = React.createClass
+  render: -> 
+    `<div>
+      <p>Content for Foo</p>
+    </div>`
 
-module.exports = Foo;
+module.exports = Foo
 ```
 
-And `test/spec/components/Foo.js` (*javascript - jasmine*):
+And `test/spec/components/Foo/Foo.coffee` (*javascript - jasmine*):
 ```
 
-'use strict';
+`'use strict';`
 
-describe('Foo', function () {
-  var Foo, component;
+describe 'Foo', -> 
 
-  beforeEach(function () {
-    Foo = require('../../../src/scripts/components/Foo');
-    component = Foo();
-  });
+  beforeEach ->
+    Foo = require '../../../src/scripts/components/Foo/Foo.coffee'
+    component = Foo()
 
-  it('should create a new instance of Foo', function () {
-    expect(component).toBeDefined();
-  });
-});
+  it 'should create a new instance of Foo', ->
+    expect(component).toBeDefined()
 ```
 
 ## Testing
@@ -112,9 +102,11 @@ The react-webpack generator automates the setup of a [ReactJS](http://facebook.g
 project
   - src
     - scripts
-      -components
-        ComponentOne.js
-        ComponentTwo.js
+      - components
+        - ComponentOne
+          ComponentOne.coffee
+        - ComponentTwo
+          ComponentTwo.coffee
       main.js
     - styles
       main.css
@@ -123,8 +115,10 @@ project
   - test
     - spec
       - components
-        ComponentOne.js
-        ComponentTwo.js
+        - ComponentOne
+          ComponentOne.coffee
+        - ComponentTwo
+          ComponentTwo.coffee
     - helpers
       - react
         addons.js
@@ -167,7 +161,3 @@ Contributions are welcomed. When submitting a bugfix, write a test that exposes 
 ## License
 
 [BSD license](http://opensource.org/licenses/bsd-license.php)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/newtriks/generator-react-webpack/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
