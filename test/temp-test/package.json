@@ -1,10 +1,10 @@
 {
-  "name": "<%= _.slugify(appname) %>",
+  "name": "temptest",
   "version": "0.0.0",
   "src": "src",
   "test": "test",
   "dist": "dist",
-  "mainInput": "<%= scriptAppName %>",
+  "mainInput": "TemptestApp",
   "mainOutput": "main",
   "dependencies": {
     "react": "~0.10.0"
